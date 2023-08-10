@@ -1,5 +1,12 @@
 import React from "react";
-import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
+import {
+  Document,
+  Page,
+  Text,
+  View,
+  StyleSheet,
+  Image,
+} from "@react-pdf/renderer";
 import getSymbolFromCurrency from "currency-symbol-map";
 
 const styles = StyleSheet.create({
@@ -38,14 +45,21 @@ const PDFDocument = ({ formData, currency }) => {
     <Document>
       <Page size='A4' style={styles.page}>
         <View>
-          <Text
-            style={{
-              fontSize: "40px",
-              alignSelf: "flex-end",
-            }}
-          >
-            InvoiceNo #{formData.invoiceNo}
-          </Text>
+          <div style={{ display: "flex" }}>
+            <Image
+              style={{ height: "120px", width: "120px" }}
+              src={formData.selectedImage}
+              alt='uploadedImage'
+            />
+            <Text
+              style={{
+                fontSize: "40px",
+                alignSelf: "flex-end",
+              }}
+            >
+              InvoiceNo #{formData.invoiceNo}
+            </Text>
+          </div>
           <Text style={{ marginLeft: "20px" }}>
             Invoice from:{formData.invoicefrom}
           </Text>
