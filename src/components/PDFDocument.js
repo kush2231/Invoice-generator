@@ -47,8 +47,8 @@ const PDFDocument = ({ formData, currency }) => {
         <View>
           <div style={{ display: "flex" }}>
             <Image
-              style={{ height: "120px", width: "120px" }}
               src={formData.selectedImage}
+              style={{ height: "120px", width: "120px" }}
               alt='uploadedImage'
             />
             <Text
@@ -115,9 +115,9 @@ const PDFDocument = ({ formData, currency }) => {
               </View>
             ))}
           </View>
-          <div style={{ margin: "50px" }}></div>
           <Text
             style={{
+              marginTop: "20px",
               margin: "5px 3px",
 
               alignSelf: "flex-end",

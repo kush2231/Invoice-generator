@@ -21,14 +21,14 @@ const SideComponent = ({ formData, handlecurrency }) => {
       </PDFDownloadLink>
       <Typography> Currency </Typography>
       <select
-        class='form-select'
+        className='form-select'
         id='currency'
         name='currency'
         style={{ height: "40px" }}
         value={currency}
         onChange={(e) => {
-            handlecurrency(e.target.value);
-            setcurrency(e.target.value);
+          handlecurrency(e.target.value);
+          setcurrency(e.target.value);
         }}
       >
         <option value='AFN'>AFN - Afghan Afghani - ؋</option>

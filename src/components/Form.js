@@ -169,7 +169,7 @@ const MyForm = () => {
   };
   return (
     <Grid container spacing={2}>
-      <Grid item xs={9}>
+      <Grid item xs={12} sm={12} md={9} lg={9}>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={1}>
             <Grid item xs={6}>
@@ -207,7 +207,7 @@ const MyForm = () => {
                 placeholder='Who is this invoice From'
                 value={invoicefrom}
                 onChange={(e) => setinvoicefrom(e.target.value)}
-                margin='auto'
+                margin='none'
               />
               <div style={{ display: "flex" }}>
                 <TextField
@@ -217,7 +217,7 @@ const MyForm = () => {
                   value={invoiceto}
                   onChange={(e) => setinvoiceto(e.target.value)}
                   placeholder='Who is this invoice To'
-                  margin='auto'
+                  margin='none'
                   style={{
                     marginRight: "10px",
                     marginLeft: "20px",
@@ -229,7 +229,7 @@ const MyForm = () => {
                   value={shipto}
                   onChange={(e) => setshipto(e.target.value)}
                   placeholder='Ship To'
-                  margin='auto'
+                  margin='none'
                   style={{}}
                 />
               </div>
@@ -242,7 +242,7 @@ const MyForm = () => {
                 placeholder='invoice id'
                 value={invoiceNo}
                 onChange={(e) => setinvoiceNo(e.target.value)}
-                margin='auto'
+                margin='none'
                 style={{
                   margin: "25px 20px 20px 0px",
                 }}
@@ -357,25 +357,25 @@ const MyForm = () => {
                   backgroundColor: "#1563a3",
                 }}
               >
-                <td
-                  style={{
-                    width: "40%",
-                  }}
-                >
-                  Description{" "}
-                </td>
-                <td>Quantity</td>
-                <td>Price </td>
-                <td>Amount </td>
-
-                <td>Edit </td>
-                <td>Remove </td>
+                <tr>
+                  <th
+                    style={{
+                      width: "40%",
+                    }}
+                  >
+                    Description
+                  </th>
+                  <th>Quantity</th>
+                  <th>Price </th>
+                  <th>Amount </th>
+                  <th>Edit </th>
+                  <th>Remove </th>
+                </tr>
               </thead>
-              <tbody>
-                {" "}
-                {items.map((item, index) => (
+
+              {items.map((item, index) => (
+                <tbody key={index}>
                   <tr>
-                    {" "}
                     <td>{item.description}</td>
                     <td>{item.quantity}</td>
                     <td>
@@ -385,7 +385,7 @@ const MyForm = () => {
                     </td>
                     <td>
                       <span>
-                        {item.quantity * item.unitPrice}{" "}
+                        {item.quantity * item.unitPrice}
                         {getSymbolFromCurrency(currency)}
                       </span>
                     </td>
@@ -412,8 +412,8 @@ const MyForm = () => {
                       </span>
                     </td>
                   </tr>
-                ))}
-              </tbody>
+                </tbody>
+              ))}
             </table>
           </div>
 
@@ -446,110 +446,102 @@ const MyForm = () => {
                 // className={styles.customtable}
                 style={{ width: "100%", border: "1px solid lightgray " }}
               >
-                {" "}
-                <tr>
-                  {" "}
-                  <td>Sub Total</td>{" "}
-                  <td>
-                    {" " + getSymbolFromCurrency(currency) + " "}
-                    {total}
-                  </td>
-                </tr>
-                <tr>
-                  {" "}
-                  <td>
-                    {" "}
-                    <Typography> Discount</Typography>
-                  </td>
-                  <td>
-                    <TextField
-                      label='Discount %'
-                      type='number'
-                      placeholder='discount rate'
-                      focused
-                      value={discountrate}
-                      onChange={(e) => setdiscountrate(e.target.value)}
-                      style={{ marginRight: "10px" }}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    {" "}
-                    <Typography> Tax Rate</Typography>
-                  </td>
-                  <td>
-                    <TextField
-                      focused
-                      label='Tax'
-                      type='number'
-                      placeholder='tax rate'
-                      value={taxRate}
-                      onChange={(e) => settaxRate(e.target.value)}
-                      style={{ marginRight: "10px" }}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    {" "}
-                    <Typography> Shiping</Typography>
-                  </td>
-                  <td>
-                    <TextField
-                      focused
-                      label='Shipping'
-                      type='number'
-                      placeholder='Shipping'
-                      value={Shipping}
-                      onChange={(e) => setShipping(e.target.value)}
-                      style={{ marginRight: "10px" }}
-                    />{" "}
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    {" "}
-                    <Typography> after all Calculations </Typography>
-                  </td>
-                  <td>
-                    {total -
-                      (total * discountrate) / 100 +
-                      (total * taxRate) / 100 +
-                      Number(Shipping)}
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    {" "}
-                    <Typography> amountPaid </Typography>
-                  </td>
-                  <td>
-                    <TextField
-                      focused
-                      label='Amount paid'
-                      type='number'
-                      placeholder='Amout PAid'
-                      value={AmountPaid}
-                      onChange={(e) => setAmountPaid(e.target.value)}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    {" "}
-                    <Typography> Due Amount </Typography>
-                  </td>
-                  <td>
-                    {" "}
-                    {getSymbolFromCurrency(currency)}
-                    {total -
-                      (total * discountrate) / 100 +
-                      (total * taxRate) / 100 +
-                      Number(Shipping) -
-                      AmountPaid}
-                  </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td>Sub Total</td>
+                    <td>
+                      {" " + getSymbolFromCurrency(currency) + " "}
+                      {total}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <Typography> Discount</Typography>
+                    </td>
+                    <td>
+                      <TextField
+                        label='Discount %'
+                        type='number'
+                        placeholder='discount rate'
+                        focused
+                        value={discountrate}
+                        onChange={(e) => setdiscountrate(e.target.value)}
+                        style={{ marginRight: "10px" }}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <Typography> Tax Rate</Typography>
+                    </td>
+                    <td>
+                      <TextField
+                        focused
+                        label='Tax'
+                        type='number'
+                        placeholder='tax rate'
+                        value={taxRate}
+                        onChange={(e) => settaxRate(e.target.value)}
+                        style={{ marginRight: "10px" }}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <Typography> Shiping</Typography>
+                    </td>
+                    <td>
+                      <TextField
+                        focused
+                        label='Shipping'
+                        type='number'
+                        placeholder='Shipping'
+                        value={Shipping}
+                        onChange={(e) => setShipping(e.target.value)}
+                        style={{ marginRight: "10px" }}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <Typography> after all Calculations </Typography>
+                    </td>
+                    <td>
+                      {total -
+                        (total * discountrate) / 100 +
+                        (total * taxRate) / 100 +
+                        Number(Shipping)}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <Typography> amountPaid </Typography>
+                    </td>
+                    <td>
+                      <TextField
+                        focused
+                        label='Amount paid'
+                        type='number'
+                        placeholder='Amout PAid'
+                        value={AmountPaid}
+                        onChange={(e) => setAmountPaid(e.target.value)}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <Typography> Due Amount </Typography>
+                    </td>
+                    <td>
+                      {getSymbolFromCurrency(currency)}
+                      {total -
+                        (total * discountrate) / 100 +
+                        (total * taxRate) / 100 +
+                        Number(Shipping) -
+                        AmountPaid}
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </Grid>
           </Grid>
@@ -558,7 +550,7 @@ const MyForm = () => {
           </Button>
         </form>
       </Grid>
-      <Grid item xs={3}>
+      <Grid item xs={12} sm={12} md={3} lg={3}>
         <SideComponent formData={formData} handlecurrency={handlecurrency} />
       </Grid>
     </Grid>
