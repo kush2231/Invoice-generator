@@ -114,6 +114,7 @@ const MyForm = () => {
     setUnitPrice(0);
     // alert("Item will  be Added ");
   };
+  
   const editItem = (index) => {
     setedit(true);
     settaskId(index);
@@ -137,7 +138,7 @@ const MyForm = () => {
     // Update the object at the specified index
     newArray[taskId] = newItem;
     settotal(total + quantity * unitPrice);
-
+  
     // Update the state with the new array
     setItems(newArray);
     // alert("Item will  Updated successfully");
@@ -159,7 +160,7 @@ const MyForm = () => {
     // alert(" Removing Item ");
   };
   const handlecurrency = (data) => {
-    setcurrency(data);
+    setcurrency(data); // callback from the side component to get data from the child component
   };
 
   const handleFileChange = (event) => {
@@ -176,7 +177,7 @@ const MyForm = () => {
               <input
                 type='file'
                 id='fileInput'
-                accept='.pdf,.doc,.docx,.jpg,.jpeg,.png'
+                accept='.jpg,.jpeg,.png'
                 style={{ display: "none" }}
                 onChange={handleFileChange}
               />
@@ -547,6 +548,7 @@ const MyForm = () => {
           </Grid>
           <Button type='submit' variant='contained' color='primary'>
             Submit Details
+
           </Button>
         </form>
       </Grid>
