@@ -132,16 +132,13 @@ const MyForm = () => {
       unitPrice,
     };
 
-    // Create a copy of the array
     const newArray = [...items];
 
-    // Update the object at the specified index
     newArray[taskId] = newItem;
     settotal(total + quantity * unitPrice);
-  
-    // Update the state with the new array
+
     setItems(newArray);
-    // alert("Item will  Updated successfully");
+
     setDescription("");
     setQuantity(0);
     setUnitPrice(0);
@@ -157,10 +154,9 @@ const MyForm = () => {
       newtotal += newItems[i].quantity * newItems[i].unitPrice;
     }
     settotal(newtotal);
-    // alert(" Removing Item ");
   };
   const handlecurrency = (data) => {
-    setcurrency(data); // callback from the side component to get data from the child component
+    setcurrency(data);
   };
 
   const handleFileChange = (event) => {
